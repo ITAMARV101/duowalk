@@ -10,8 +10,6 @@ public class FriendsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friends);
 
-        int x = 0;
-
         findViewById(R.id.btn_add_friend).setOnClickListener(v ->
                 Toast.makeText(this, "Friend request sent!", Toast.LENGTH_SHORT).show());
     }
