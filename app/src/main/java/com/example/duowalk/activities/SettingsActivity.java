@@ -1,9 +1,11 @@
-package com.example.duowalk;
+package com.example.duowalk.activities;
 
 import android.os.Bundle;
 import android.widget.Switch;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.duowalk.R;
 
 public class SettingsActivity extends AppCompatActivity {
     @Override

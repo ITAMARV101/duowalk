@@ -1,4 +1,4 @@
-package com.example.duowalk;
+package com.example.duowalk.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,9 +7,8 @@ import android.os.Looper;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.example.duowalk.R;
 
 public class SplashActivity extends AppCompatActivity {
 

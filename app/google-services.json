@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "124812529236",
+    "firebase_url": "https://duowalk-80fad-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "duowalk-80fad",
+    "storage_bucket": "duowalk-80fad.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124812529236:android:0415df953c3fc25025a7c1",
+        "android_client_info": {
+          "package_name": "com.example.duowalk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYNLw1a6XgjmaimNe2L0IGQdE-XSgBTkg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
