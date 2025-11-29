@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@color/duowalk_background_light">
+
+    <TextView
+        style="@style/DuowalkHeading"
+        android:text="Settings"
+        android:textStyle="bold"
+        android:textColor="@color/duowalk_text_dark"/>
+
+    <Switch
+        style="@style/DuowalkBody"
+        android:textColor="@color/duowalk_text_dark"
+        android:layoutDirection="ltr"
+        android:id="@+id/switch_notifications"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Notifications"
+        android:layout_marginTop="16dp"/>
+
+    <Switch
+        style="@style/DuowalkBody"
+        android:textColor="@color/duowalk_text_dark"
+        android:layoutDirection="ltr"
+        android:id="@+id/switch_darkmode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dark Mode"
+        android:layout_marginTop="12dp"/>
+</LinearLayout>

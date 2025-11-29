@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/duowalk_background_light">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layoutDirection="ltr"
+        android:layout_margin="20dp">
+
+        <!-- תמונת פרופיל -->
+        <ImageView
+            android:id="@+id/btn_profile"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/duowalk_button_bg"
+            android:contentDescription="Profile"
+            android:scaleType="centerInside"
+            android:src="@drawable/profile" />
+
+        <ImageButton
+            android:id="@+id/btn_edit_profile"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="8dp"
+            android:background="@drawable/duowalk_button_bg"
+            android:contentDescription="Edit profile"
+            android:scaleType="centerInside"
+            android:src="@drawable/edit" />
+    </FrameLayout>
+
+    <!-- Username -->
+    <TextView
+        style="@style/DuowalkHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username"
+        android:textSize="20sp"
+        android:textColor="@color/duowalk_text_dark"
+        android:layout_marginTop="8dp"
+        android:gravity="center" />
+
+</LinearLayout>

@@ -1,0 +1,47 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/duowalk_background_light"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        style="@style/DuowalkHeading"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="Friends List:"
+        android:textColor="@color/duowalk_text_dark" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layoutDirection="ltr"
+        android:gravity="center_vertical">
+
+        <EditText
+            android:id="@+id/editTextText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Username"
+            android:textColorHint="#6f6f6f"
+            android:inputType="textPersonName"
+            android:padding="8dp"
+            android:textColor="@color/duowalk_text_dark"
+            android:backgroundTint="@color/duowalk_primary_blue" />
+
+        <Button
+            style="@style/DuowalkBody"
+            android:id="@+id/btn_add_friend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/duowalk_primary_green"
+            android:textColor="@color/duowalk_text_light"
+            android:text="Add" />
+    </LinearLayout>
+
+</LinearLayout>

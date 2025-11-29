@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- בסיסי -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- לוגו -->
+    <color name="duowalk_primary_green">#35D07F</color>
+    <color name="duowalk_primary_blue">#2B9DF4</color>
+    <color name="duowalk_primary_gradient_start">#35D07F</color>
+    <color name="duowalk_primary_gradient_end">#2B9DF4</color>
+
+    <!-- משניים והדגשה -->
+    <color name="duowalk_accent_yellow">#FFC93C</color>
+    <color name="duowalk_secondary">#2B9DF4</color>
+
+    <!-- ניטרלי -->
+    <color name="duowalk_text_dark">#1B1B1B</color>
+    <color name="duowalk_text_light">#FFFFFF</color>
+    <color name="duowalk_background_light">#F7F9FB</color>
+    <color name="duowalk_gray_neutral">#C7CED6</color>
+
+    <!-- וריאציות בהירות/כהות -->
+    <color name="duowalk_primary_dark">#1F8E58</color> <!-- darker green variant -->
+    <color name="duowalk_primary_light">#6EE6A8</color> <!-- lighter green variant -->
+</resources>

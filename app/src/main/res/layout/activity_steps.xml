@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    tools:context=".StepsActivity">
+
+    <TextView
+        style="@style/DuowalkHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Today's Steps: 0"
+        android:textColor="@color/duowalk_text_dark"
+        />
+
+    <Button
+        style="@style/DuowalkBody"
+        android:backgroundTint="@color/duowalk_primary_green"
+        android:textColor="@color/duowalk_text_light"
+        android:layout_gravity="center"
+        android:id="@+id/btn_start_walk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Walk"
+        android:layout_marginTop="16dp" />
+</LinearLayout>
