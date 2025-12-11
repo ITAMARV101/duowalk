@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="24dp"
-    tools:context=".SplashActivity">
+    android:padding="24dp">
 
     <ImageView
         android:id="@+id/imageView_logo"

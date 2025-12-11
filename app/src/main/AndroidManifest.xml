@@ -12,22 +12,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Duowalk" >
         <activity
-            android:name=".LeaderboardActivity"
+            android:name=".activities.AuthActivity"
             android:exported="false" />
         <activity
-            android:name=".StepsActivity"
+            android:name=".activities.LeaderboardActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".activities.StepsActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".activities.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".FriendsActivity"
+            android:name=".activities.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".activities.FriendsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.SplashActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,7 +39,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="false" />
     </application>
 

@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace 'com.sport.duowalk'
+    namespace 'com.example.duowalk'
     compileSdk 36
 
     defaultConfig {
