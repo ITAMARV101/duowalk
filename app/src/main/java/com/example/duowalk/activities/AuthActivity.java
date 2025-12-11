@@ -3,6 +3,7 @@ package com.example.duowalk.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -17,8 +18,6 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 
@@ -70,7 +69,7 @@ public class AuthActivity extends AppCompatActivity {
 
         clearErrors();
 
-        // ---------- basic checks ----------
+        // --------- simple checks ----------
         if (TextUtils.isEmpty(email)) {
             tilEmail.setError("Email is required");
             return;
@@ -100,43 +99,15 @@ public class AuthActivity extends AppCompatActivity {
 
         btnPrimaryAction.setEnabled(false);
 
-        // ---------- 1) Try LOGIN ----------
-        FirebaseUtils.authFB
-                .signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        // Login success → go to main
-                        btnPrimaryAction.setEnabled(true);
-                        navigateToMain();
-                    } else {
-                        // Login failed → check why
-                        Exception e = task.getException();
-
-                        if (e instanceof FirebaseAuthInvalidUserException) {
-                            // User doesn't exist → SIGN UP instead
-                            createAccount(email, phone, password);
-                        } else if (e instanceof FirebaseAuthInvalidCredentialsException) {
-                            btnPrimaryAction.setEnabled(true);
-                            tilPassword.setError("Incorrect password");
-                        } else {
-                            btnPrimaryAction.setEnabled(true);
-                            Toast.makeText(this,
-                                    "Login failed: " + (e != null ? e.getMessage() : ""),
-                                    Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-    }
-
-    // ---------- 2) SIGN UP path if user didn't exist ----------
-    private void createAccount(String email, String phone, String password) {
+        // --------- Auth: create user with email + password ----------
         FirebaseUtils.authFB
                 .createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
+                    btnPrimaryAction.setEnabled(true);
+
                     if (!task.isSuccessful()) {
-                        btnPrimaryAction.setEnabled(true);
                         Toast.makeText(this,
-                                "Sign up failed: " +
+                                "Auth failed: " +
                                         (task.getException() != null ? task.getException().getMessage() : ""),
                                 Toast.LENGTH_LONG).show();
                         return;
@@ -144,7 +115,6 @@ public class AuthActivity extends AppCompatActivity {
 
                     AuthResult result = task.getResult();
                     if (result == null || result.getUser() == null) {
-                        btnPrimaryAction.setEnabled(true);
                         Toast.makeText(this, "Unknown error", Toast.LENGTH_SHORT).show();
                         return;
                     }
@@ -154,9 +124,8 @@ public class AuthActivity extends AppCompatActivity {
                 });
     }
 
-    // Save user data to Realtime Database (private + public profile)
+    // Save to Realtime Database using FirebaseUtils CRUD helpers
     private void saveUserData(String uid, String email, String phone) {
-        // Private user node
         Map<String, Object> privateData = new HashMap<>();
         privateData.put("uid", uid);
         privateData.put("email", email);
@@ -165,25 +134,21 @@ public class AuthActivity extends AppCompatActivity {
         privateData.put("personalBest", 0);
         privateData.put("streak", 0);
 
-        FirebaseUtils.createUserPrivateData(uid, privateData, (DatabaseError error, DatabaseReference ref) -> {
+        FirebaseUtils.createUserPrivateData(uid, privateData, (error, ref) -> {
             if (error != null) {
-                btnPrimaryAction.setEnabled(true);
                 Toast.makeText(this,
                         "Failed saving private data: " + error.getMessage(),
                         Toast.LENGTH_LONG).show();
                 return;
             }
 
-            // Public profile (rules: only username, steps, personalBest, streak)
             Map<String, Object> publicProfile = new HashMap<>();
-            publicProfile.put("username", email);  // later you can change to a real username
+            publicProfile.put("username", email);
             publicProfile.put("steps", 0);
             publicProfile.put("personalBest", 0);
             publicProfile.put("streak", 0);
 
-            FirebaseUtils.upsertPublicProfile(uid, publicProfile, (DatabaseError error1, DatabaseReference ref1) -> {
-                btnPrimaryAction.setEnabled(true);
-
+            FirebaseUtils.upsertPublicProfile(uid, publicProfile, (error1, ref1) -> {
                 if (error1 != null) {
                     Toast.makeText(this,
                             "Failed saving public profile: " + error1.getMessage(),
@@ -192,10 +157,15 @@ public class AuthActivity extends AppCompatActivity {
                 }
 
                 Toast.makeText(this, "Account created", Toast.LENGTH_SHORT).show();
-                navigateToMain();
+                Intent intent = new Intent(AuthActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+
             });
         });
     }
+
 
     private void clearErrors() {
         tilEmail.setError(null);
@@ -209,12 +179,5 @@ public class AuthActivity extends AppCompatActivity {
         String phone = raw.replaceAll("[\\s-]", "");
         if (phone.length() < 7 || phone.length() > 15) return false;
         return android.util.Patterns.PHONE.matcher(phone).matches();
-    }
-
-    private void navigateToMain() {
-        Intent intent = new Intent(AuthActivity.this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        finish();
     }
 }
