@@ -92,10 +92,10 @@ public class FirebaseUtils {
         return newRef;
     }
 
-    // =========================================================
+    // =================================================================
     //  THIN CONVENIENCE HELPERS  (optional)
     //  These just call the generic ones so your Activity code is nicer.
-    // =========================================================
+    // =================================================================
 
     // ---------- USERS ----------
     public static void createUserPrivateData(
