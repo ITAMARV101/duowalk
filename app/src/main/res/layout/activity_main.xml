@@ -1,94 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/duowalk_background_light">
+    android:background="@color/duowalk_background_light"
+    android:padding="24dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <!-- Top Bar Card (same style as Auth card) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardTopBar"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="24dp">
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/white"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/duowalk_gray_neutral"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- שורה 1 -->
         <LinearLayout
-            android:layout_width="346dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="24dp">
+            android:padding="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/btn_settings"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/duowalk_button_bg"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@drawable/bg_icon_button"
                 android:contentDescription="Settings"
                 android:scaleType="centerInside"
-                android:src="@drawable/settings" />
+                android:src="@drawable/settings"
+                app:tint="@color/duowalk_text_dark" />
 
             <TextView
-                style="@style/DuowalkHeading"
                 android:id="@+id/tv_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:text="Duowalk"
-                android:paddingHorizontal="49dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 android:textColor="@color/duowalk_text_dark" />
 
             <ImageButton
                 android:id="@+id/btn_profile"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/duowalk_button_bg"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@drawable/bg_icon_button"
                 android:contentDescription="Profile"
                 android:scaleType="centerInside"
-                android:src="@drawable/profile" />
+                android:src="@drawable/profile"
+                app:tint="@color/duowalk_text_dark" />
         </LinearLayout>
 
-        <!-- שורה 2 -->
-        <TextView
-            style="@style/DuowalkHeading"
-            android:layout_marginTop="24dp"
-            android:text="Map (coming soon)"
-            android:textColor="@color/duowalk_text_dark" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Map Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardMap"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/white"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/duowalk_gray_neutral"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintTop_toBottomOf="@id/cardTopBar"
+        app:layout_constraintBottom_toTopOf="@id/cardBottomNav"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
-            android:layout_marginTop="400dp"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_map_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Map"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/duowalk_text_dark"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Coming soon: routes + nearby friends"
+                android:textSize="13sp"
+                android:textColor="@color/duowalk_text_dark"
+                android:alpha="0.7"/>
+
+            <!-- Fake map placeholder -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_map_placeholder"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Map Preview"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/duowalk_text_dark"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="(placeholder)"
+                    android:textSize="13sp"
+                    android:textColor="@color/duowalk_text_dark"
+                    android:alpha="0.7"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Bottom Nav Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardBottomNav"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/white"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/duowalk_gray_neutral"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="14dp"
             android:gravity="center"
-            android:layout_height="wrap_content">
+            android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/btn_leaderboard"
-                android:layout_width="50dp"
-                android:layout_marginBottom="5dp"
-
-                android:layout_height="50dp"
-                android:background="@drawable/duowalk_button_bg"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_icon_button"
                 android:contentDescription="Leaderboard"
                 android:scaleType="centerInside"
-                android:src="@drawable/leaderboard" />
+                android:src="@drawable/leaderboard"
+                app:tint="@color/duowalk_secondary" />
 
             <ImageButton
                 android:id="@+id/btn_steps"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="@drawable/duowalk_button_bg"
+                android:layout_width="62dp"
+                android:layout_height="62dp"
+                android:layout_marginHorizontal="18dp"
+                android:background="@drawable/bg_primary_round_button"
                 android:contentDescription="My Steps"
-                android:layout_margin="20dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/my_steps" />
+                android:src="@drawable/my_steps"
+                app:tint="@color/white" />
 
             <ImageButton
                 android:id="@+id/btn_friends"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/duowalk_button_bg"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_icon_button"
                 android:contentDescription="Add Friend"
                 android:scaleType="centerInside"
-                android:src="@drawable/add_friend" />
+                android:src="@drawable/add_friend"
+                app:tint="@color/duowalk_secondary" />
         </LinearLayout>
 
-    </LinearLayout>
-</ScrollView>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
