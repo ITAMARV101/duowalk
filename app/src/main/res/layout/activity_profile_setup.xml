@@ -2,16 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rootAuth"
+    android:id="@+id/rootProfileSetup"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/duowalk_background_light"
     android:padding="24dp"
-    tools:context=".activities.AuthActivity">
+    tools:context=".activities.ProfileSetupActivity">
 
     <!-- Center card -->
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardAuth"
+        android:id="@+id/cardProfileSetup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -50,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Welcome back"
+                android:text="Complete your profile"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:textColor="@color/duowalk_text_dark" />
@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Use your email and password to continue"
+                android:text="Add a username and phone number"
                 android:textSize="14sp"
                 android:textColor="@color/duowalk_text_dark" />
 
@@ -70,70 +70,58 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp" />
 
-            <!-- Email -->
+            <!-- Username -->
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilEmail"
+                android:id="@+id/tilUsername"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
-                app:startIconDrawable="@android:drawable/ic_dialog_email"
+                android:hint="Username"
+                app:startIconDrawable="@android:drawable/ic_menu_edit"
                 app:boxStrokeColor="@color/duowalk_secondary"
                 app:boxStrokeWidth="1dp"
                 app:boxStrokeWidthFocused="2dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEmail"
+                    android:id="@+id/etUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
                     android:textColor="@color/duowalk_text_dark"
                     android:textColorHint="@color/duowalk_gray_neutral" />
-
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Password -->
+            <!-- Phone Number -->
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilPassword"
+                android:id="@+id/tilPhone"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:hint="Password"
-                app:endIconMode="password_toggle"
-                app:startIconDrawable="@android:drawable/ic_lock_lock"
+                android:hint="Phone number"
+                app:startIconDrawable="@android:drawable/ic_menu_call"
                 app:boxStrokeColor="@color/duowalk_secondary"
                 app:boxStrokeWidth="1dp"
                 app:boxStrokeWidthFocused="2dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etPassword"
+                    android:id="@+id/etPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword"
+                    android:inputType="phone"
+                    android:maxLines="1"
                     android:textColor="@color/duowalk_text_dark"
                     android:textColorHint="@color/duowalk_gray_neutral" />
-
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Forgot password -->
-            <TextView
-                android:id="@+id/tvForgotPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_gravity="end"
-                android:text="Forgot password?"
-                android:textSize="13sp"
-                android:textColor="@color/duowalk_secondary" />
-
-            <!-- Continue (login + signup logic in Java) -->
+            <!-- Save/Finish -->
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnPrimaryAction"
+                android:id="@+id/btnSaveProfile"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="20dp"
-                android:text="Continue"
+                android:text="Finish"
                 android:textAllCaps="false"
                 android:textSize="16sp"
                 android:textColor="@color/white"

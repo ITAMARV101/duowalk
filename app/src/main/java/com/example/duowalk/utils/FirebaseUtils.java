@@ -22,6 +22,11 @@ public class FirebaseUtils {
     public static DatabaseReference publicProfilesRef = rtDb.getReference("public_profiles");
     public static DatabaseReference tasksRef          = rtDb.getReference("tasks");
 
+    public static DatabaseReference usernamesRef      = rtDb.getReference("usernames");
+    public static DatabaseReference phoneIndexRef     = rtDb.getReference("phone_index");
+
+
+
     // ---------- COMMON ----------
     public static String getCurrentUid() {
         return authFB.getCurrentUser() != null
