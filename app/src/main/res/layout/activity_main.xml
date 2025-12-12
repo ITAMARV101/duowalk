@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/duowalk_background_light"
-    android:padding="24dp">
+    android:padding="24dp"
+    android:layoutDirection="ltr">
 
-    <!-- Top Bar Card (same style as Auth card) -->
+    <!-- Top Bar Card -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardTopBar"
         android:layout_width="0dp"
@@ -27,16 +28,17 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layoutDirection="ltr">
 
             <ImageButton
-                android:id="@+id/btn_settings"
+                android:id="@+id/btn_profile"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
                 android:background="@drawable/bg_icon_button"
-                android:contentDescription="Settings"
+                android:contentDescription="Profile"
                 android:scaleType="centerInside"
-                android:src="@drawable/settings"
+                android:src="@drawable/profile"
                 app:tint="@color/duowalk_text_dark" />
 
             <TextView
@@ -48,16 +50,17 @@
                 android:text="Duowalk"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/duowalk_text_dark" />
+                android:textColor="@color/duowalk_text_dark"
+                android:textDirection="ltr" />
 
             <ImageButton
-                android:id="@+id/btn_profile"
+                android:id="@+id/btn_settings"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
                 android:background="@drawable/bg_icon_button"
-                android:contentDescription="Profile"
+                android:contentDescription="Settings"
                 android:scaleType="centerInside"
-                android:src="@drawable/profile"
+                android:src="@drawable/settings"
                 app:tint="@color/duowalk_text_dark" />
         </LinearLayout>
 
@@ -85,7 +88,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="20dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layoutDirection="ltr">
 
             <TextView
                 android:id="@+id/tv_map_title"
@@ -94,50 +98,32 @@
                 android:text="Map"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="@color/duowalk_text_dark"/>
+                android:textColor="@color/duowalk_text_dark"
+                android:textDirection="ltr"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:text="Coming soon: routes + nearby friends"
+                android:text="Routes and nearby friends"
                 android:textSize="13sp"
                 android:textColor="@color/duowalk_text_dark"
-                android:alpha="0.7"/>
+                android:alpha="0.7"
+                android:textDirection="ltr"/>
 
-            <!-- Fake map placeholder -->
-            <LinearLayout
+            <!-- Google Map -->
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/map_fragment"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/bg_map_placeholder"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Map Preview"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:textColor="@color/duowalk_text_dark"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="(placeholder)"
-                    android:textSize="13sp"
-                    android:textColor="@color/duowalk_text_dark"
-                    android:alpha="0.7"/>
-            </LinearLayout>
+                android:layout_marginTop="16dp" />
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Bottom Nav Card -->
+    <!-- Bottom Nav -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardBottomNav"
         android:layout_width="0dp"
@@ -157,16 +143,17 @@
             android:layout_height="wrap_content"
             android:padding="14dp"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layoutDirection="ltr">
 
             <ImageButton
-                android:id="@+id/btn_leaderboard"
+                android:id="@+id/btn_friends"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="@drawable/bg_icon_button"
-                android:contentDescription="Leaderboard"
+                android:contentDescription="Add Friend"
                 android:scaleType="centerInside"
-                android:src="@drawable/leaderboard"
+                android:src="@drawable/add_friend"
                 app:tint="@color/duowalk_secondary" />
 
             <ImageButton
@@ -181,13 +168,13 @@
                 app:tint="@color/white" />
 
             <ImageButton
-                android:id="@+id/btn_friends"
+                android:id="@+id/btn_leaderboard"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="@drawable/bg_icon_button"
-                android:contentDescription="Add Friend"
+                android:contentDescription="Leaderboard"
                 android:scaleType="centerInside"
-                android:src="@drawable/add_friend"
+                android:src="@drawable/leaderboard"
                 app:tint="@color/duowalk_secondary" />
         </LinearLayout>
 

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
 
+    // כבר קיים אצלך: נדרש ל-Firebase (google-services.json)
     id("com.google.gms.google-services")
 }
 
@@ -32,10 +33,13 @@ android {
 
 dependencies {
 
+    // בסיסי UI
     implementation libs.appcompat
     implementation libs.material
     implementation libs.activity
     implementation libs.constraintlayout
+
+    // TESTS
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
@@ -51,4 +55,10 @@ dependencies {
 
     // Firebase - Storage (לשמירת תמונות וקבצים)
     implementation ("com.google.firebase:firebase-storage-ktx:20.3.0")
+
+    // נותן לך SupportMapFragment + GoogleMap כדי להציג מפה בתוך האפליקציה
+    implementation ("com.google.android.gms:play-services-maps:18.2.0")
+
+    // קבלת מיקום (GPS/WiFi/Cell) בצורה
+    implementation ("com.google.android.gms:play-services-location:21.3.0")
 }

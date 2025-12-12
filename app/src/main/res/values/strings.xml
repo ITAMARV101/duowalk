@@ -1,3 +1,8 @@
 <resources>
+    <!-- שם האפליקציה -->
     <string name="app_name">Duowalk</string>
+
+    <!-- Google Maps API Key -->
+    <!-- נדרש כדי ש-Google Maps SDK יאפשר להציג מפה -->
+    <string name="google_maps_key">AIzaSyABX5THhOEm5DehfRmOYNddLOLhY-ArFp8</string>
 </resources>

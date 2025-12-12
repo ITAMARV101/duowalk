@@ -2,6 +2,51 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- ========================= -->
+    <!-- הרשאות מערכת (GLOBAL) -->
+    <!-- ========================= -->
+
+    <!-- ✅ חובה למפות (Google Maps) כדי להוריד אריחים (tiles) מהאינטרנט -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- ✅ מומלץ: מאפשר למפות/שירותים לדעת אם יש חיבור רשת -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- מיקום מדויק (GPS) – נדרש להצגת מיקום המשתמש על המפה -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!-- מיקום מקורב (WiFi / Cell) – גיבוי + צריכת סוללה נמוכה -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- פעילות / צעדים – נדרש לספירת צעדים (Android 10+) -->
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+
+    <!-- מצלמה – לצילום תמונת פרופיל -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- גלריה – קריאת תמונות מהמכשיר -->
+    <!-- Android 13+ -->
+    <uses-permission
+        android:name="android.permission.READ_MEDIA_IMAGES"
+        tools:targetApi="33" />
+
+    <!-- Android 7–12 -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
+    <!-- אנשי קשר – מציאת חברים -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <!-- התראות – Android 13+ -->
+    <uses-permission
+        android:name="android.permission.POST_NOTIFICATIONS"
+        tools:targetApi="33" />
+
+    <!-- ========================= -->
+    <!-- Application -->
+    <!-- ========================= -->
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,39 +56,54 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Duowalk">
+
+        <!-- Google Maps API Key -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <!-- Activities -->
         <activity
             android:name=".activities.ProfileSetupActivity"
             android:exported="false" />
+
         <activity
             android:name=".activities.AuthActivity"
             android:exported="false" />
+
         <activity
             android:name=".activities.LeaderboardActivity"
             android:exported="false" />
+
         <activity
             android:name=".activities.StepsActivity"
             android:exported="false" />
+
         <activity
             android:name=".activities.ProfileActivity"
             android:exported="false" />
+
         <activity
             android:name=".activities.SettingsActivity"
             android:exported="false" />
+
         <activity
             android:name=".activities.FriendsActivity"
             android:exported="false" />
+
         <activity
             android:name=".activities.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activities.MainActivity"
             android:exported="false" />
+
     </application>
 
 </manifest>
