@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootEditProfile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/duowalk_background_light"
+    android:padding="24dp"
+    tools:context=".activities.EditProfileActivity">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardEditProfile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/white"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/duowalk_gray_neutral"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:id="@+id/tvEditTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit Profile"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/duowalk_text_dark" />
+
+            <TextView
+                android:id="@+id/tvEditSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Update your details below"
+                android:textSize="14sp"
+                android:textColor="@color/duowalk_gray_neutral" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilUsername"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Username"
+                app:startIconDrawable="@android:drawable/ic_menu_edit"
+                app:boxStrokeColor="@color/duowalk_secondary"
+                app:boxStrokeWidth="1dp"
+                app:boxStrokeWidthFocused="2dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/duowalk_text_dark"
+                    android:textColorHint="@color/duowalk_gray_neutral" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPhone"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="Phone Number"
+                app:startIconDrawable="@android:drawable/ic_menu_call"
+                app:boxStrokeColor="@color/duowalk_secondary"
+                app:boxStrokeWidth="1dp"
+                app:boxStrokeWidthFocused="2dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:textColor="@color/duowalk_text_dark"
+                    android:textColorHint="@color/duowalk_gray_neutral" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:background="@drawable/bg_auth_button"
+                app:backgroundTint="@null" />
+
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

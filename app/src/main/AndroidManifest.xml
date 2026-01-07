@@ -2,50 +2,48 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- ========================= -->
-    <!-- הרשאות מערכת (GLOBAL) -->
-    <!-- ========================= -->
+    <!-- Hardware features -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.sensor.stepcounter"
+        android:required="false" />
 
-    <!-- ✅ חובה למפות (Google Maps) כדי להוריד אריחים (tiles) מהאינטרנט -->
+    <!-- Network -->
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <!-- ✅ מומלץ: מאפשר למפות/שירותים לדעת אם יש חיבור רשת -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <!-- מיקום מדויק (GPS) – נדרש להצגת מיקום המשתמש על המפה -->
+    <!-- Location -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
-    <!-- מיקום מקורב (WiFi / Cell) – גיבוי + צריכת סוללה נמוכה -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
-    <!-- פעילות / צעדים – נדרש לספירת צעדים (Android 10+) -->
+    <!-- Activity Recognition / Steps -->
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
 
-    <!-- מצלמה – לצילום תמונת פרופיל -->
-    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- Foreground Service -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_HEALTH" />
 
-    <!-- גלריה – קריאת תמונות מהמכשיר -->
-    <!-- Android 13+ -->
-    <uses-permission
-        android:name="android.permission.READ_MEDIA_IMAGES"
-        tools:targetApi="33" />
+    <!-- Boot -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
-    <!-- Android 7–12 -->
-    <uses-permission
-        android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="32" />
-
-    <!-- אנשי קשר – מציאת חברים -->
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-
-    <!-- התראות – Android 13+ -->
+    <!-- Notifications (Android 13+) -->
     <uses-permission
         android:name="android.permission.POST_NOTIFICATIONS"
         tools:targetApi="33" />
 
-    <!-- ========================= -->
-    <!-- Application -->
-    <!-- ========================= -->
+    <!-- Media / Storage -->
+    <uses-permission
+        android:name="android.permission.READ_MEDIA_IMAGES"
+        tools:targetApi="33" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
+    <!-- Camera / Contacts -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -57,40 +55,49 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Duowalk">
 
-        <!-- Google Maps API Key -->
+        <!-- Alarm receiver: internal only -->
+        <receiver
+            android:name=".receivers.ReminderReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- Boot receiver: system broadcast -->
+        <receiver
+            android:name=".receivers.BootReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+
+        <!-- Foreground Service -->
+        <service
+            android:name=".services.StepCounterService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="health" />
+
+        <!-- Google Maps / Places API keys -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="com.google.android.libraries.places.api.API_KEY"
+            android:value="@string/google_maps_key" />
 
         <!-- Activities -->
-        <activity
-            android:name=".activities.ProfileSetupActivity"
-            android:exported="false" />
+        <activity android:name=".activities.EditProfileActivity" android:exported="false" />
+        <activity android:name=".activities.ProfileSetupActivity" android:exported="false" />
+        <activity android:name=".activities.AuthActivity" android:exported="false" />
+        <activity android:name=".activities.LeaderboardActivity" android:exported="false" />
+        <activity android:name=".activities.StepsActivity" android:exported="false" />
+        <activity android:name=".activities.ProfileActivity" android:exported="false" />
+        <activity android:name=".activities.SettingsActivity" android:exported="false" />
+        <activity android:name=".activities.FriendsActivity" android:exported="false" />
 
-        <activity
-            android:name=".activities.AuthActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".activities.LeaderboardActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".activities.StepsActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".activities.ProfileActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".activities.SettingsActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".activities.FriendsActivity"
-            android:exported="false" />
-
+        <!-- Launcher -->
         <activity
             android:name=".activities.SplashActivity"
             android:exported="true">
@@ -100,10 +107,7 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".activities.MainActivity"
-            android:exported="false" />
-
+        <activity android:name=".activities.MainActivity" android:exported="false" />
     </application>
 
 </manifest>

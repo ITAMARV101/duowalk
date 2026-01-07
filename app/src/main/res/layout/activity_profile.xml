@@ -1,48 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootProfile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:background="@color/duowalk_background_light">
+    android:background="@color/duowalk_background_light"
+    android:padding="24dp"
+    tools:context=".activities.ProfileActivity">
 
-    <FrameLayout
-        android:layout_width="wrap_content"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardProfile"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layoutDirection="ltr"
-        android:layout_margin="20dp">
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/white"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/duowalk_gray_neutral"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- תמונת פרופיל -->
-        <ImageView
-            android:id="@+id/btn_profile"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="@drawable/duowalk_button_bg"
-            android:contentDescription="Profile"
-            android:scaleType="centerInside"
-            android:src="@drawable/profile" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:gravity="center_horizontal">
 
-        <ImageButton
-            android:id="@+id/btn_edit_profile"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="8dp"
-            android:background="@drawable/duowalk_button_bg"
-            android:contentDescription="Edit profile"
-            android:scaleType="centerInside"
-            android:src="@drawable/edit" />
-    </FrameLayout>
+            <!-- Profile + Edit Button -->
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
 
-    <!-- Username -->
-    <TextView
-        style="@style/DuowalkHeading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Username"
-        android:textSize="20sp"
-        android:textColor="@color/duowalk_text_dark"
-        android:layout_marginTop="8dp"
-        android:gravity="center" />
+                <!-- Profile Picture -->
+                <ImageView
+                    android:id="@+id/btn_profile"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="@drawable/duowalk_button_bg"
+                    android:contentDescription="Profile"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/profile" />
 
-</LinearLayout>
+                <!-- Edit Button -->
+                <ImageButton
+                    android:id="@+id/btn_edit_profile"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="6dp"
+                    android:background="@drawable/duowalk_button_bg"
+                    android:contentDescription="Edit profile"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/edit" />
+            </FrameLayout>
+
+            <!-- Username -->
+            <TextView
+                android:id="@+id/tv_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Username"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/duowalk_text_dark"
+                android:gravity="center" />
+
+            <!-- Instructions -->
+            <TextView
+                android:id="@+id/tv_profile_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Tap the pencil to edit your details"
+                android:textSize="13sp"
+                android:textColor="@color/duowalk_gray_neutral"
+                android:gravity="center" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <!-- Phone Label -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Phone"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/duowalk_gray_neutral" />
+
+            <!-- Phone Value -->
+            <TextView
+                android:id="@+id/tv_phonenum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Phone Number"
+                android:textSize="16sp"
+                android:textColor="@color/duowalk_text_dark" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="24dp" />
+
+            <!-- Delete Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_delete_user"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="Delete Account"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:background="@drawable/bg_auth_button"
+                app:backgroundTint="@null" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
